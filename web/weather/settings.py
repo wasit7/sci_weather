@@ -25,7 +25,7 @@ DJANGO_DEBUG = os.environ.get('DJANGO_DEBUG', 'True')
 if DJANGO_DEBUG == 'True':
     DEBUG = True
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = '0x0%q8_%3%%5)sajk8n*5&z9+k2f0r7k($gm_5==n7!g@dc#55'
+    SECRET_KEY = '&s!n66v-94ajfbo=reonfh*-it_=o9q&yp)fz(*23p0wp(kojd'
 elif DJANGO_DEBUG == 'False':
     DEBUG = False
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'weather.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db', 'db.sqlite3'),
     }
 }
 
@@ -124,8 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static_files'
+STATIC_ROOT = 'static'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
     os.path.join(BASE_DIR, "myapp", "static"),
 ]

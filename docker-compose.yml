@@ -1,12 +1,29 @@
 version: '2'
 services:
-   web:
-      build: .
-      command: /usr/local/bin/gunicorn weather.wsgi:application -b :8000
-      volumes:
-         - .:/usr/src/sci_weather
+   nginx:
+      restart: always
+      build: ./nginx/
       ports:
-         - "8000:8000"
+       - "80:80"
+      volumes:
+       - /www/static
+      volumes_from:
+       - web
+      links:
+       - web:web
+   web:
+      build:
+         context: ./web
+         args:
+            debug: "True"
+            secret_key: "&s!n66v-94ajfbo=reonfh*-it_=o9q&yp)fz(*23p0wp(kojd"
+      command: /usr/local/bin/gunicorn weather.wsgi:application -b :8000
+      expose:
+         - "8000"
+      volumes:
+         - /app
+         - /app/static
+         - ./db:/app/db
       environment:
-         DJANGO_DEBUG: 'True'
-         DJANGO_SECRET_KEY: '0x0%q8_%3%%5)sajk8n*5&z9+k2f0r7k($gm_5==n7!g@dc#55'
+         DJANGO_DEBUG: "True"
+         DJANGO_SECRET_KEY: "&s!n66v-94ajfbo=reonfh*-it_=o9q&yp)fz(*23p0wp(kojd"
