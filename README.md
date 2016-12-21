@@ -1,4 +1,5 @@
 # SCI Weather
 ## Requirements
-* Django 1.9.5
-* Pandas 
+* Django 1.10
+
+cdn datatable, jquery
