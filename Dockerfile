@@ -9,4 +9,6 @@ ADD . /usr/src/sci_weather/
 COPY ./myapp/static/ /usr/src/sci_weather/static
 RUN python manage.py collectstatic --noinput
 RUN chmod -R 755 static_files/
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 CMD /usr/local/bin/gunicorn weather.wsgi:application -b :8000
