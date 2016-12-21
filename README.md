@@ -8,6 +8,7 @@
 * jQuery
 
 ## Setup
-docker-compose build --force-rm
-docker run -it --rm -v $(pwd)/db:/app/db sciweather_web bash ./db_config.sh
-docker-compose up1
+* `docker-compose build --force-rm`
+* `docker run -it --rm -v $(pwd)/db:/app/db sciweather_web bash ./db_config.sh`
+* `docker run -it --rm -v $(pwd)/db:/app/db sciweather_web python manage.py createsuperuser` if necessary.
+* `docker-compose up`
