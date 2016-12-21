@@ -19,13 +19,18 @@ print "BASE_ID: %s"%BASE_DIR
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&s!n66v-94ajfbo=reonfh*-it_=o9q&yp)fz(*23p$0wp(koj'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DJANGO_DEBUG = os.environ.get('DJANGO_DEBUG', 'True')
 
-ALLOWED_HOSTS = ["10.100.20.195",]
+if DJANGO_DEBUG == 'True':
+    DEBUG = True
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = '0x0%q8_%3%%5)sajk8n*5&z9+k2f0r7k($gm_5==n7!g@dc#55'
+elif DJANGO_DEBUG == 'False':
+    DEBUG = False
+    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -119,7 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static_files'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR,"myapp", "static"),
+    os.path.join(BASE_DIR, "myapp", "static"),
 ]

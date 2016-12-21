@@ -1,0 +1,12 @@
+version: '2'
+services:
+   web:
+      build: .
+      command: /usr/local/bin/gunicorn weather.wsgi:application -b :8000
+      volumes:
+         - .:/usr/src/sci_weather
+      ports:
+         - "8000:8000"
+      environment:
+         DJANGO_DEBUG: 'True'
+         DJANGO_SECRET_KEY: '0x0%q8_%3%%5)sajk8n*5&z9+k2f0r7k($gm_5==n7!g@dc#55'
