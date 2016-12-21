@@ -21,8 +21,7 @@ services:
       expose:
          - "8000"
       volumes:
-         - ./web:/app
-         - /app/static
+         - /app
          - ./db:/app/db
       environment:
          DJANGO_DEBUG: "True"

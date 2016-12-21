@@ -7,8 +7,8 @@ server {
     error_log   /var/log/nginx/sci_weather_error.log;
     access_log  /var/log/nginx/sci_weather_access.log;
 
-    location /static {
-        root /app/;
+    location /static/ {
+        root /app;
     }
 
     location / {
