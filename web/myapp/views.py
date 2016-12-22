@@ -21,11 +21,7 @@ def show_table(request, nodeid):
     weather_data = Weather.objects.all()
     #.order_by('-nodeid')[:10][::-1]
     data = []
-    real_time = ""
-    real_temp = 0.0
-    real_humi = 0.0
-    real_israin = False
-    real_nodeid = ""
+    real_data = {}
 
     # Reformat data from DB to format that template can understand.
     for row in weather_data:
@@ -44,11 +40,7 @@ def show_table(request, nodeid):
         node_ids.append(i.nodeid)
 
         if int(i.nodeid) is int(nodeid):
-            real_time = i.time
-            real_temp = i.temp
-            real_humi = i.humi
-            real_israin = i.israin
-            real_nodeid = i.nodeid
+            real_data = i
 
             # Create chart data.
             chart_data.append({
@@ -63,11 +55,7 @@ def show_table(request, nodeid):
 
     return render(request, "myapp/home.html", {
         'data': data,
-        'real_time': real_time,
-        'real_temp': real_temp,
-        'real_humi': real_humi,
-        'real_israin': real_israin,
-        'real_nodeid': real_nodeid,
+        'real_data': real_data,
         'nodeid_array': node_ids,
         'chart_data': json.dumps(chart_data).replace('\"', '\'')
     })

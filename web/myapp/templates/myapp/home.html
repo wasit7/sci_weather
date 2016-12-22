@@ -191,7 +191,11 @@
                     </div>
                   </div>
 
-                  <h4 class="mb-0">{{real_nodeid}}</h4>
+                  {% if real_data %}
+                    <h4 class="mb-0">{{real_data.nodeid}}</h4>
+                  {% else %}
+                    <h4 class="mb-0">No data</h4>
+                  {% endif %}
                   <p>Node</p>
                 </div>
               </div>
@@ -200,7 +204,11 @@
             <div class="col-sm-4 col-lg-4">
               <div class="card card-inverse text-xs-center" style="background-color: #ff66ff">
                 <div class="card-block pb-0">
-                  <h4 class="mb-0">{{real_time}}</h4>
+                  {% if real_data %}
+                    <h4 class="mb-0">{{real_data.time}}</h4>
+                  {% else %}
+                    <h4 class="mb-0">No data</h4>
+                  {% endif %}
                   <p>Time</p>
                 </div>
               </div>
@@ -209,7 +217,11 @@
             <div class="col-sm-2 col-lg-2">
               <div class="card card-inverse text-xs-center" style="background-color: #668cff">
                 <div class="card-block pb-0">
-                  <h4 class="mb-0">{{real_temp}}</h4>
+                  {% if real_data %}
+                    <h4 class="mb-0">{{real_data.temp}}</h4>
+                  {% else %}
+                    <h4 class="mb-0">No data</h4>
+                  {% endif %}
                   <p>Temperature</p>
                 </div>
               </div>
@@ -218,7 +230,11 @@
             <div class="col-sm-2 col-lg-2">
               <div class="card card-inverse text-xs-center" style="background-color: #66b3ff">
                 <div class="card-block pb-0">
-                  <h4 class="mb-0">{{real_humi}}</h4>
+                  {% if real_data %}
+                    <h4 class="mb-0">{{real_data.humi}}</h4>
+                  {% else %}
+                    <h4 class="mb-0">No data</h4>
+                  {% endif %}
                   <p>Humidity</p>
                 </div>
               </div>
@@ -227,7 +243,11 @@
             <div class="col-sm-2 col-lg-2">
               <div class="card card-inverse text-xs-center" style="background-color: #66d9ff">
                 <div class="card-block pb-0">
-                  <h4 class="mb-0">{{real_israin}}</h4>
+                  {% if real_data %}
+                    <h4 class="mb-0">{{real_data.israin}}</h4>
+                  {% else %}
+                    <h4 class="mb-0">No data</h4>
+                  {% endif %}
                   <p>Rain</p>
                 </div>
               </div>
