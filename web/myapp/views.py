@@ -81,7 +81,3 @@ def data_exchanger(request):
 			{'key':'value1'},
 	]}
 	return JsonResponse(server_data)
-
-
-def rice_diseases(request):
-	return render(request, "myapp/rice_diseases.html")

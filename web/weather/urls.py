@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from myapp import views
 
@@ -24,5 +25,5 @@ urlpatterns = [
     url(r'^home/$', views.show_home, name='show_home'),
     url(r'^(?P<nodeid>\d+)/$', views.show_table, name='show_table'),
     url(r'^data_exchanger/$', views.data_exchanger, name='data_exchanger'),
-    url(r'^rice_diseases/$', views.rice_diseases, name='rice_diseases')
+    url(r'^rice_diseases/$', TemplateView.as_view(template_name='myapp/rice_diseases.html'))
 ]
