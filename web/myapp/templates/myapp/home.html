@@ -311,15 +311,21 @@
                     <th style="background-color: #66b3ff; width: 15%;">Humidity</th>
                     <th style="background-color: #66d9ff; width: 15%;">Rain</th>
                   </tr>
-                  {% for r in data %}
-                  <tr class="regular">
-                    <td>{{r.nodeid}}</td>
-                    <td>{{r.time}}</td>
-                    <td>{{r.temp}}</td>
-                    <td>{{r.humi}}</td>
-                    <td>{{r.israin}}</td>
-                  </tr>
-                  {% endfor %}
+                  {% if data %}
+                    {% for r in data %}
+                    <tr class="regular">
+                      <td>{{r.nodeid}}</td>
+                      <td>{{r.time}}</td>
+                      <td>{{r.temp}}</td>
+                      <td>{{r.humi}}</td>
+                      <td>{{r.israin}}</td>
+                    </tr>
+                    {% endfor %}
+                  {% else %}
+                    <tr class="regular">
+                      <td colspan="5">No data found!</td>
+                    </tr>
+                  {% endif %}
                 </table>
               </div>
             </div>

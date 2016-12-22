@@ -26,6 +26,8 @@ def show_table(request, nodeid):
     real_humi = 0.0
     real_israin = False
     real_nodeid = ""
+
+    # Reformat data from DB to format that template can understand.
     for row in weather_data:
         data.append({
             'time'	:row.time,
@@ -36,25 +38,28 @@ def show_table(request, nodeid):
         })
 
     chart_data = []
-    nodeid_dic = {}
+    node_ids = []
     for i in weather_data:
-        if i.nodeid not in nodeid_dic:
-            nodeid_dic[i.nodeid] = 0
+        # Collect node_id.
+        node_ids.append(i.nodeid)
+
         if int(i.nodeid) is int(nodeid):
             real_time = i.time
             real_temp = i.temp
             real_humi = i.humi
             real_israin = i.israin
             real_nodeid = i.nodeid
+
+            # Create chart data.
             chart_data.append({
                 #'date'	: "%s %s %s %s %s"%(i.time.hour,i.time.minute,i.time.day,i.time.month,i.time.year),
                 'date'	: "%02d %02d %d"%(i.time.day, i.time.month,i.time.year),
                 'temp'	: float(i.temp)
             })
 
-    nodeid_array = []
-    for v,k in nodeid_dic.iteritems():
-        nodeid_array.append(v)
+    # Use only unique id.
+    node_ids = list(set(node_ids))
+    node_ids.sort()
 
     return render(request, "myapp/home.html", {
         'data': data,
@@ -63,7 +68,7 @@ def show_table(request, nodeid):
         'real_humi': real_humi,
         'real_israin': real_israin,
         'real_nodeid': real_nodeid,
-        'nodeid_array': nodeid_array,
+        'nodeid_array': node_ids,
         'chart_data': json.dumps(chart_data).replace('\"', '\'')
     })
 
