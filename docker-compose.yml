@@ -21,8 +21,8 @@ services:
       expose:
          - "8000"
       volumes:
-         - /app
-         - ./db:/app/db
+         - /app # If using ./web:/app, please make sure that you have static files collected.
+         - ./db:/app/db # This preserves the database file.
       environment:
          DJANGO_DEBUG: "True"
          DJANGO_SECRET_KEY: "&s!n66v-94ajfbo=reonfh*-it_=o9q&yp)fz(*23p0wp(kojd"
