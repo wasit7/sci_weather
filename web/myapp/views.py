@@ -45,7 +45,9 @@ def show_table(request, nodeid):
             # Create chart data.
             chart_data.append({
                 #'date'	: "%s %s %s %s %s"%(i.time.hour,i.time.minute,i.time.day,i.time.month,i.time.year),
-                'date'	: "%02d %02d %d"%(i.time.day, i.time.month,i.time.year),
+                #"JJ NN SS DD MM YYYY"
+                #'date'	: "%02d %02d %02d %02d %02d %04d" % (i.time.hour, i.time.minute, i.time.second, i.time.day, i.time.month, i.time.year),
+                'date': str(i.time),
                 'temp'	: float(i.temp)
             })
 

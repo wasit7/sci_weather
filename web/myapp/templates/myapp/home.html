@@ -105,7 +105,7 @@
           chart.dataProvider = chartData;
           chart.marginLeft = 10;
           chart.categoryField = "date";
-          chart.dataDateFormat = "DD MM YYYY";
+          chart.dataDateFormat = "JJ NN SS DD MM YYYY";
 
           // listen for "dataUpdated" event (fired when chart is inited) and call zoomChart method when it happens
           //chart.addListener("dataUpdated", zoomChart);
@@ -113,8 +113,9 @@
           // AXES
           // category
           var categoryAxis = chart.categoryAxis;
-          categoryAxis.parseDates = true; // as our data is date-based, we set parseDates to true
-          categoryAxis.minPeriod = "DD"; // our data is yearly, so we set minPeriod to YYYY
+          //categoryAxis.parseDates = true; // as our data is date-based, we set parseDates to true
+          //categoryAxis.dataDateFormat = "JJ NN SS DD MM YYYY";
+          //categoryAxis.minPeriod = "SS"; // our data is yearly, so we set minPeriod to YYYY
           categoryAxis.dashLength = 3;
           categoryAxis.minorGridEnabled = true;
           categoryAxis.minorGridAlpha = 0.1;
