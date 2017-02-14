@@ -22,3 +22,8 @@ running the docker locally before.
 * `ln -s ../db db` to simulate the db folder and also use the existing database. This have to be removed if we are going
 to deploy with Docker.
 * `python manage.py runserver` to start the development server.
+
+## To use the docker structure in another project
+There are many changes required to make a custom Django project. How ever the minimum changes are the following:
+* `os.path.join(BASE_DIR, "myapp", "static")` in sci_weather/web/weather/settings.py
+* `CMD /usr/local/bin/gunicorn weather.wsgi:application -b :8000` in sci_weather/web/Dockerfile
