@@ -13,6 +13,7 @@
 This is container level, but the database file will be mounted from host, so it is persistance.
 * `docker run -it --rm -v $(pwd)/db:/app/db sciweather_web python manage.py createsuperuser` if necessary.
 * `docker-compose up`. Application should listen at port 80 on machine.
+* ` docker-compose up -d` to run the server in background. This has been test on digital ocean for 2 months, no problem found so far.
 
 ## Running with Development Server
 * `chown <user>:<user> db/db.sqlite3` to allow development server to read/write the database file. File will be root:root if
