@@ -8,10 +8,10 @@
 * jQuery
 
 ## Deploying with Docker
-* set environment in ~/.bashrc
-```bash
-DJANGO_DEBUG="False"
-DJANGO_SECRET_KEY="some_key"
+* set environment in docker-compose.yml
+```yml
+    DJANGO_DEBUG: "False"
+    DJANGO_SECRET_KEY: "&s!n66v-94ajfbo=reonfh*-it_=o9q&yp)fz(*23p0wp(kojd"
 ```
 * `docker-compose build --force-rm`
 * `docker run -it --rm -v $(pwd)/db:/app/db sciweather_web bash ./db_config.sh` to create migrations and migrate.
