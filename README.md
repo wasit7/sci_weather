@@ -8,6 +8,7 @@
 * jQuery
 
 ## Deploying with Docker
+* set environment in ~/.bashrc
 ```bash
 DJANGO_DEBUG="False"
 DJANGO_SECRET_KEY="some_key"
