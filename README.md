@@ -8,6 +8,10 @@
 * jQuery
 
 ## Deploying with Docker
+```bash
+DJANGO_DEBUG="False"
+DJANGO_SECRET_KEY="some_key"
+```
 * `docker-compose build --force-rm`
 * `docker run -it --rm -v $(pwd)/db:/app/db sciweather_web bash ./db_config.sh` to create migrations and migrate.
 This is container level, but the database file will be mounted from host, so it is persistance.
